@@ -1,0 +1,213 @@
+openapi: "3.0.4"
+info:
+  title: "courses"
+  version: "0"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /register:
+    post:
+      tags: [Admin accounts]
+      summary: Create new admin account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                username: {}
+                password: {}
+                fullName: {}
+                email: {}
+              required:
+                - username
+                - password
+                - fullName
+                - email
+      responses:
+        400:
+          description: Missing attrs or name already taken
+        200:
+          description: Success
+  /login:
+    post:
+      tags: [Admin accounts]
+      summary: Log in and get token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                username: {}
+                password: {}
+              required:
+                - username
+                - password
+      responses:
+        400:
+          description: Missing attrs or wrong password
+        404:
+          description: No such user
+        200:
+          description: Success
+  /profile:
+    put:
+      tags: [Admin accounts]
+      security: [bearerAuth: []]
+      summary: Change profile details (except password)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              minProperties: 1
+              properties:
+                username: {}
+                fullName: {}
+                email: {}
+      responses:
+        400:
+          description: Not changing anything
+        200:
+          description: Success
+    patch:
+      tags: [Admin accounts]
+      security: [bearerAuth: []]
+      summary: Change password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                password: {}
+              required:
+                - password
+      responses:
+        400:
+          description: New password not specified
+        200:
+          description: Success
+  /teachers:
+    get:
+      tags: [Teachers]
+      summary: Return all teachers
+      responses:
+        200:
+          description: Success
+    post:
+      tags: [Teachers]
+      security: [bearerAuth: []]
+      summary: Create new teacher
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                fullName: {}
+                qualifications: {}
+                email: {}
+                phone: {}
+              required:
+                - fullName
+                - qualifications
+                - email
+                - phone
+      responses:
+        400:
+          description: Missing attrs
+        200:
+          description: Success
+  /teachers/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+    put:
+      tags: [Teachers]
+      summary: Edit details of a teacher
+      security: [bearerAuth: []]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              minProperties: 1
+              properties:
+                fullName: {}
+                qualifications: {}
+                email: {}
+                phone: {}
+      responses:
+        200:
+          description: Success
+    delete:
+      tags: [Teachers]
+      summary: Delete a teacher
+      security: [bearerAuth: []]
+      responses:
+        200:
+          description: Success
+  /courses:
+    get:
+      tags: [Courses]
+      summary: Return all courses
+      responses:
+        200:
+          description: Success
+    post:
+      tags: [Courses]
+      security: [bearerAuth: []]
+      summary: Create new course
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name: {}
+                description: {}
+                location: {}
+                price: {}
+              required:
+                - name
+                - description
+                - location
+                - price
+      responses:
+        400:
+          description: Missing attrs
+        200:
+          description: Success
+  /courses/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+    put:
+      tags: [Courses]
+      summary: Edit details of a course
+      security: [bearerAuth: []]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              minProperties: 1
+              properties:
+                name: {}
+                description: {}
+                location: {}
+                price: {}
+      responses:
+        200:
+          description: Success
+    delete:
+      tags: [Courses]
+      summary: Delete a course
+      security: [bearerAuth: []]
+      responses:
+        200:
+          description: Success
