@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body data-bs-theme="dark">
+    <header class="text-center">
+        <h1>Courses</h1>
+    </header>
+    <main class="container">
+        <section class="card my-3">
+            <div class="card-body">
+                <h2 class="card-title">Account</h2>
+                not logged in
+                <hr>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#registerModal">Register</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Log
+                    in</button>
+                <button type="button" class="btn btn-danger">Log out</button>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                    data-bs-target="#editAccountModal">Change account details</button>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                    data-bs-target="#editPasswordModal">Change password</button>
+            </div>
+        </section>
+        <section class="card my-3">
+            <div class="card-body">
+                <h2 class="card-title">Teachers</h2>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Full name</th>
+                            <th>Qualifications</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                </table>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#newTeacherModal">New teacher</button>
+            </div>
+        </section>
+        <section class="card my-3">
+            <div class="card-body">
+                <h2 class="card-title">Courses</h2>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Location</th>
+                            <th>Price</th>
+                            <th>Teacher id</th>
+                        </tr>
+                    </thead>
+                </table>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#newCourseModal">New course</button>
+            </div>
+        </section>
+    </main>
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Register</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label class="d-block mb-2">
+                            Username
+                            <input type="text" class="form-control" name="username">
+                        </label>
+                        <label class="d-block mb-2">
+                            Password
+                            <input type="password" class="form-control" name="password">
+                        </label>
+                        <label class="d-block mb-2">
+                            Full name
+                            <input type="text" class="form-control" name="fullName">
+                        </label>
+                        <label class="d-block mb-2">
+                            Email
+                            <input type="email" class="form-control" name="email">
+                        </label>
+                        <button type="submit" class="btn btn-primary w-50 mx-auto d-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Log in</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label class="d-block mb-2">
+                            Username
+                            <input type="text" class="form-control" name="username">
+                        </label>
+                        <label class="d-block mb-2">
+                            Password
+                            <input type="password" class="form-control" name="password">
+                        </label>
+                        <button type="submit" class="btn btn-primary w-50 mx-auto d-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editAccountModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Edit account details</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label class="d-block mb-2">
+                            Username
+                            <input type="text" class="form-control" name="username">
+                        </label>
+                        <label class="d-block mb-2">
+                            Full name
+                            <input type="text" class="form-control" name="fullName">
+                        </label>
+                        <label class="d-block mb-2">
+                            Email
+                            <input type="email" class="form-control" name="email">
+                        </label>
+                        <button type="submit" class="btn btn-primary w-50 mx-auto d-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editPasswordModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Edit password</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label class="d-block mb-2">
+                            Password
+                            <input type="password" class="form-control" name="password">
+                        </label>
+                        <button type="submit" class="btn btn-primary w-50 mx-auto d-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="newTeacherModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">New teacher</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label class="d-block mb-2">
+                            Full name
+                            <input type="text" class="form-control" name="fullName">
+                        </label>
+                        <label class="d-block mb-2">
+                            Qualifications
+                            <input type="password" class="form-control" name="qualifications">
+                        </label>
+                        <label class="d-block mb-2">
+                            Email
+                            <input type="email" class="form-control" name="email">
+                        </label>
+                        <label class="d-block mb-2">
+                            Phone
+                            <input type="tel" class="form-control" name="phone">
+                        </label>
+                        <button type="submit" class="btn btn-primary w-50 mx-auto d-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="newCourseModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">New course</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label class="d-block mb-2">
+                            Name
+                            <input type="text" class="form-control" name="name">
+                        </label>
+                        <label class="d-block mb-2">
+                            Description
+                            <input type="password" class="form-control" name="description">
+                        </label>
+                        <label class="d-block mb-2">
+                            Location
+                            <input type="email" class="form-control" name="location">
+                        </label>
+                        <label class="d-block mb-2">
+                            Price
+                            <input type="tel" class="form-control" name="price">
+                        </label>
+                        <label class="d-block mb-2">
+                            Teacher
+                            <select name="TeacherId" id="teacherSelect" class="form-select" size="5"></select>
+                        </label>
+                        <button type="submit" class="btn btn-primary w-50 mx-auto d-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
